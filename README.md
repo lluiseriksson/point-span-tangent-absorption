@@ -1,5 +1,7 @@
 # Point-span tangent absorption
 
+[![verify-all-papers](https://github.com/lluiseriksson/point-span-tangent-absorption/actions/workflows/verify.yml/badge.svg)](https://github.com/lluiseriksson/point-span-tangent-absorption/actions/workflows/verify.yml)
+
 This public research repository contains two frozen, reproducible manuscripts
 on lower bounds for finite point spans that absorb embedded tangent spaces.
 
@@ -14,6 +16,11 @@ Each folder is a frozen package with source, PDF, exact finite replays,
 review/audit records, a SHA-256 manifest, and a deterministic ZIP. The package
 verifiers check those frozen payloads independently of this repository-level
 documentation.
+
+Public releases:
+
+- [`successor-v0.1`](https://github.com/lluiseriksson/point-span-tangent-absorption/releases/tag/successor-v0.1)
+- [`v0.5`](https://github.com/lluiseriksson/point-span-tangent-absorption/releases/tag/v0.5)
 
 ## Verification
 

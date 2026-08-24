@@ -1,22 +1,55 @@
-name: verify-paper
+name: verify-all-papers
 
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  verify:
+  successor-v01:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
-      - name: Exact finite replays
-        working-directory: repro
+      - name: Verify frozen successor package
+        working-directory: successor_v0.1
+        run: python repro/verify_package.py
+      - name: Run successor exact finite replays
+        working-directory: successor_v0.1/repro
         run: python run_all_replays.py
-      - name: Compile LaTeX
-        uses: xu-cheng/latex-action@v3
+      - name: Compile successor LaTeX
+        uses: xu-cheng/latex-action@4.1.0
         with:
-          root_file: manuscript.tex
+          root_file: successor_v0.1/manuscript.tex
+          latexmk_use_xelatex: false
+
+  reviewed-v05:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: "3.12"
+      - name: Extract frozen v0.5 package
+        run: |
+          mkdir ci-v05
+          unzip -q v0.5/point-span-tangent-absorption-v0.5.zip -d ci-v05
+          cp v0.5/point-span-tangent-absorption-v0.5.zip ci-v05/
+      - name: Verify frozen v0.5 package
+        working-directory: ci-v05
+        run: python repro/verify_package.py
+      - name: Run v0.5 exact finite replays
+        working-directory: ci-v05
+        run: python repro/run_all_replays.py
+      - name: Compile v0.5 LaTeX
+        uses: xu-cheng/latex-action@4.1.0
+        with:
+          root_file: ci-v05/manuscript.tex
           latexmk_use_xelatex: false

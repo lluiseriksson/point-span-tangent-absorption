@@ -1,0 +1,10 @@
+# Frozen research packages must retain byte-for-byte payloads on every OS.
+successor_v0.1/** -text
+v0.5/** -text
+
+# Repository-level metadata uses LF.
+/.github/** text eol=lf
+/README.md text eol=lf
+/PUBLICATION_RECORD.md text eol=lf
+/CITATION.cff text eol=lf
+/.gitattributes text eol=lf

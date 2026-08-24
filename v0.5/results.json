@@ -1,0 +1,30 @@
+{
+  "replays": [
+    {
+      "name": "linear_p1_sharpness",
+      "result": "repro/results/linear_p1_sharpness.json",
+      "result_sha256": "1c93b4724a15bf6dcb96ec24b6b355966ed1cd24ee8d281206a8b289e0cdc85b",
+      "script": "verify_linear_p1_sharpness.py",
+      "script_sha256": "6b0bd67afcc94da4516bf78c0361359b12637f715966e5c27c62556145e0f0bd",
+      "status": "PASS"
+    },
+    {
+      "name": "simplex_fixtures",
+      "result": "repro/results/simplex_fixtures.json",
+      "result_sha256": "0667b7852bf8d5780ddcfd8fac17a94347dc518abef1145b7156ae19f76b2610",
+      "script": "verify_simplex_fixtures.py",
+      "script_sha256": "4241dabd7d19c66ed951c79b5a39a88858ed346a0be16240ce1f1fc1e01ea5f5",
+      "status": "PASS"
+    },
+    {
+      "name": "quadric_grid",
+      "result": "repro/results/quadric_grid.json",
+      "result_sha256": "1b2b08d6ed8f70547a692516e7fb9c19a3e77624da9bf3b3a2ecc7706e88f95c",
+      "script": "verify_quadric_tangent_absorption.py",
+      "script_sha256": "5b8789575f5ce27eb5ea7fabfeaef190fb81db7a108845950e8d21c92f9b3134",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Deterministic finite rank replays. Passing results certify only the listed fixtures, not the universal theorem, novelty, or priority.",
+  "status": "PASS"
+}

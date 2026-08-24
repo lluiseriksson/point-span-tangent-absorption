@@ -1,0 +1,728 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+\hypersetup{
+  pdftitle={Rank Bounds and a Gauss-Fiber Alternative for Point-Span Tangent Absorption},
+  pdfauthor={Lluis Eriksson},
+  pdfsubject={Algebraic geometry; first jets; Gauss maps; tangent spaces},
+  pdfkeywords={Gauss map, tangent absorption, Veronese re-embedding, Terracini loci, first jets}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\PP}{\mathbf P}
+\newcommand{\CC}{\mathbf C}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Gr}{\operatorname{Gr}}
+
+\title{Rank Bounds and a Gauss-Fiber Alternative\\
+for Point-Span Tangent Absorption}
+\author{Lluis Eriksson\\\small Independent researcher}
+\date{August 24, 2026\quad (version 0.5)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $X^d\subset\PP(V)$ be a smooth complex projective variety, let
+$H=\cO_X(1)$, and embed $X$ by the complete system $H^m$, where $m\geq3$.
+A nonempty finite reduced set $Z\subset X$ is point-span tangent-absorbing
+if the vector span $S_Z$ of its evaluation functionals contains the affine
+embedded tangent space at every point of $Z$.  We prove
+\[
+ \dim_{\CC}S_Z,\ |Z|\ \geq
+ \min\left\{(d+1)(d+2),\binom{d+m}{d}\right\}.
+\]
+The proof gives two nonexclusive alternatives.  Either $Z$ contains $d+2$
+projectively independent supports whose double points impose independent
+conditions, or $Z$ lies in a common projective tangent $d$-plane and in one
+fiber of the original Gauss map.  In the second branch, a characteristic-zero
+minimal-degree argument shows that the points are unisolvent in degree $m$ on
+that plane.  Consequently the stronger bound $(d+1)(d+2)$ is unconditional
+for $d\geq3$, and also for $d=2$, $m\geq4$.  For $d=2$, $m=3$, the exact
+ minimum is $10$, attained by a triangular lattice of ten points in a linearly
+ embedded plane.  Three points on a linearly embedded $\PP^1$ for $m=2$ show
+ that the degree assumption cannot be weakened in the uniform theorem.  A
+ separate consequence of standard jet-ampleness gives a further lower bound
+ that grows linearly with $m$ and eventually improves the constant branch.
+\end{abstract}
+
+\section{Introduction}
+
+Throughout, a variety is integral and all schemes and vector spaces are over
+$\CC$.  Let $X^d\subset\PP(V)$ be smooth and let $H=\cO_X(1)$.  Write
+\[
+ \varphi_m=\varphi_{|H^m|}:X\longrightarrow\PP\bigl(H^0(X,H^m)^*\bigr)
+\]
+for the complete embedding defined by $H^m$, and put
+\[
+ S_Z:=\Span_{\CC}\{\operatorname{ev}_p:p\in Z\}
+      \subset H^0(X,H^m)^*.
+\]
+We study nonempty finite reduced sets $Z\subset X$ satisfying
+\begin{equation}\label{eq:absorption-intro}
+ \widehat T_{\varphi_m(p)}\varphi_m(X)\subseteq S_Z\qquad(p\in Z),
+\end{equation}
+where the left side is the affine tangent space to the cone over the
+$H^m$-embedding.  We use $\varphi_m$, rather than an ambient Veronese
+notation, because restriction of degree-$m$ forms on $\PP(V)$ need not be
+the complete linear series when $X$ is not projectively normal.  We call
+\eqref{eq:absorption-intro}
+\emph{point-span tangent absorption}.
+
+The condition is an extreme interpolation defect.  The annihilator of the
+point span is the space of sections vanishing on $Z$, whereas the annihilator
+of the tangent span is the space of sections vanishing on the union $2Z$ of
+the first infinitesimal neighborhoods.  Thus absorption is equivalent to
+\begin{equation}\label{eq:kernel-equality}
+ H^0(X,\mathcal I_Z\otimes H^m)
+ =H^0(X,\mathcal I_{2Z}\otimes H^m).
+\end{equation}
+
+Write
+\[
+ \gamma_X:X\longrightarrow\Gr(d+1,V),\qquad
+ p\longmapsto\widehat T_pX
+\]
+for the Gauss map of the original embedding, and define
+\begin{equation}\label{eq:gauss-multiplicity}
+ g_X(Z):=\max_{W\in\Gr(d+1,V)}|Z\cap\gamma_X^{-1}(W)|.
+\end{equation}
+
+The main result is the following.
+
+\begin{theorem}[Rank bound and Gauss-fiber alternative]\label{thm:main}
+Let $X^d\subset\PP(V)$ be a smooth complex projective variety, $d\geq1$,
+and let $m\geq3$.  If $Z\subset X$ is a nonempty finite reduced
+point-span tangent-absorbing set for the complete $H^m$-embedding, then
+$Z$ contains $d+1$ supports whose first infinitesimal neighborhoods impose
+independent conditions on $H^m$.  In particular,
+\begin{equation}\label{eq:baseline}
+ \dim S_Z\geq(d+1)^2,\qquad |Z|\geq(d+1)^2.
+\end{equation}
+Moreover, at least one of the following nonexclusive alternatives holds:
+\begin{enumerate}[label=(\alph*)]
+\item $Z$ contains $d+2$ supports whose first infinitesimal neighborhoods
+impose independent conditions on $H^m$; hence
+\[
+ \dim S_Z,\ |Z|\geq(d+1)(d+2);
+\]
+\item there is a vector subspace $W\subset V$, $\dim W=d+1$, such that
+\[
+ Z\subset X\cap\PP(W),\qquad \widehat T_pX=W\quad(p\in Z),
+\]
+and in this case
+\[
+ \dim S_Z,\ |Z|\geq\binom{d+m}{d}.
+\]
+\end{enumerate}
+Consequently,
+\begin{equation}\label{eq:main-bound}
+ \boxed{\quad
+ \dim S_Z,\ |Z|\geq
+ \min\left\{(d+1)(d+2),\binom{d+m}{d}\right\}.
+ \quad}
+\end{equation}
+\end{theorem}
+
+The two numerical terms come from different mechanisms.  The first is a
+finite first-jet independence statement.  We derive the relevant statement
+from Ballico--Chiantini's criterion \cite[Theorem~3.5]{BallicoChiantini2021}
+and retain a direct squared-hyperplane proof of this specialization.  The
+second term is the dimension of degree-$m$ forms on the common tangent
+$\PP^d$ in the Gauss branch.  Its proof uses characteristic zero essentially.
+
+\begin{corollary}[Numerical consequences]\label{cor:numerical}
+Under the hypotheses of Theorem~\ref{thm:main}:
+\begin{enumerate}[label=(\roman*)]
+\item if $d\geq3$, then
+$\dim S_Z,|Z|\geq(d+1)(d+2)$ for every $m\geq3$;
+\item if $d=2$ and $m\geq4$, then
+$\dim S_Z,|Z|\geq12$;
+\item if $d=2$ and $m=3$, then $\dim S_Z,|Z|\geq10$, and this is exact;
+\item for every $d\geq2$ equality in the baseline
+$\dim S_Z=(d+1)^2$ is impossible.
+\end{enumerate}
+\end{corollary}
+
+\begin{corollary}[Gauss-fiber threshold]\label{cor:gauss-threshold}
+If
+\[
+ g_X(Z)<\binom{d+m}{d},
+\]
+then alternative~\textup{(a)} of Theorem~\ref{thm:main} holds.  In
+particular, $\dim S_Z,|Z|\geq(d+1)(d+2)$.
+\end{corollary}
+
+\begin{corollary}[Jet-ampleness supplement]\label{cor:jet-supplement}
+Under the hypotheses of Theorem~\ref{thm:main}, set
+\[
+ J(d,m):=\left\lfloor\frac{m+1}{2}\right\rfloor(d+1)
+          +\begin{cases}1,&m\text{ even},\\0,&m\text{ odd}.
+            \end{cases}
+\]
+Then
+\[
+ \dim S_Z,\ |Z|\geq
+ \max\left\{J(d,m),
+ \min\left((d+1)(d+2),\binom{d+m}{d}\right)\right\}.
+\]
+In particular, $J(d,m)>(d+1)(d+2)$ for every $m\geq2d+4$.
+This is a lower bound, not an assertion of exactness.
+\end{corollary}
+
+The paper makes no claim that the framework of first-jet independence is
+new.  The contribution asserted here is limited to the stated deduction for
+point-span absorption and the elementary estimate in its exceptional Gauss
+branch.  The bibliographic comparison in Section~\ref{sec:comparison} is
+selective rather than a certification of priority.
+
+\section{First jets and absorption}\label{sec:setup}
+
+For a smooth point $p\in X$, let $2p$ be the first infinitesimal neighborhood
+defined by $\mathfrak m_p^2$.  It has length $d+1$.  Since $H^m$ is very
+ample, restriction to $2p$ is surjective.  Intrinsically, its dual is the
+affine tangent space to the cone over the $H^m$-embedding; this description
+avoids any coordinate-dependent scalar in a symmetric-tensor formula.
+
+\begin{definition}
+A nonempty finite reduced set $Z\subset X$ is \emph{point-span
+tangent-absorbing with respect to $H^m$} if
+$\widehat T_{\varphi_m(p)}\varphi_m(X)\subseteq S_Z$ for every $p\in Z$.
+\end{definition}
+
+\begin{lemma}[Kernel criterion]\label{lem:kernel}
+The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $Z$ is point-span tangent-absorbing;
+\item equation \eqref{eq:kernel-equality} holds;
+\item restriction to $Z$ and restriction to $2Z$ have the same image rank.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The annihilator of $S_Z$ is the kernel of restriction to $Z$.  The
+annihilator of the span of the affine tangent spaces is the kernel of
+restriction to $2Z$.  Since the point span is contained in the tangent span,
+the three conditions are equivalent.
+\end{proof}
+
+\section{Independent supports and first-jet blocks}\label{sec:independence}
+
+We first isolate the precise independence input.  This is a specialization
+of a published general criterion, not a new general theorem about jets.
+
+\begin{lemma}[Projectively independent supports]\label{lem:independent-jets}
+Let $S\subset X$ be a finite set whose representatives in $V$ are linearly
+independent.  If $m\geq3$, then $2S$ imposes independent conditions on
+$H^m$.
+\end{lemma}
+
+\begin{proof}
+We first explain the specialization of Ballico--Chiantini
+\cite[Definition~3.1 and Theorem~3.5]{BallicoChiantini2021}.  Their condition
+$\dagger$ for $(X,L_1,S)$ says that, for every $p\in S$, the restriction map
+\[
+ H^0(X,L_1)\longrightarrow H^0(S\cup2p,L_1|_{S\cup2p})
+\]
+is surjective.  Take
+\[
+ L_1=H^2,\qquad L_2=H^{m-2},\qquad L_1\otimes L_2=H^m.
+\]
+For each $q\in S$, projective independence gives a linear form $h_q$ that
+vanishes on $S\setminus\{q\}$ and not at $q$.  The sections
+$h_q^{m-2}$ show that $S$ imposes independent conditions on $L_2$.
+
+Fix $p\in S$.  For $q\neq p$, the square $h_q^2$ prescribes the value at
+$q$ and vanishes on $2p$.  The square $h_p^2$ supplies the value at $p$.
+If $a\in V^*$ vanishes at $p$, then $h_pa$ vanishes at every support and
+has differential $h_p(p)\,da$ at $p$.  Because $H$ embeds $X$, the
+restrictions of such differentials span the cotangent space of $X$ at $p$.
+These quadrics therefore give surjectivity on $S\cup2p$, so
+$(X,H^2,S)$ satisfies $\dagger$.  Ballico--Chiantini's Theorem~3.5 now
+implies that $2S$ imposes independent conditions on $H^m$.
+
+For completeness, the same specialization has the following direct
+squared-hyperplane proof.  Order $S=\{p_1,\ldots,p_r\}$.  A single double
+point is independent because $H^m$ is very ample.  Suppose the doubles at
+$p_1,\ldots,p_{j-1}$ are independent.  Choose a linear form $e$ vanishing
+on their representative span and nonzero at $p_j$.  Then $e^2$ vanishes on
+all old double points and is a unit on $2p_j$.  Since $H^{m-2}$ is very
+ample, multiplication by $e^2$ maps a space of sections surjectively onto
+the first jets at $p_j$.  It can therefore correct arbitrary residual data
+at $2p_j$ without changing the old data.  Induction proves the assertion.
+This direct proof is included to keep the exact specialization
+self-contained.
+\end{proof}
+
+This lemma concerns the displayed finite set of supports and retains a direct
+proof tailored to that configuration.  The separate global fact that $H^m$ is
+$m$-jet ample yields Corollary~\ref{cor:jet-supplement}; its source and role are
+made explicit in the proof of that corollary.
+
+\section{Escape or Gauss-fiber concentration}\label{sec:escape}
+
+The next separator is formulated with first jets.  It uses only ambient
+linear forms and remains valid without projective normality.
+
+\begin{lemma}[Tangent escape separator]\label{lem:separator}
+Let $0\neq v\in W\subsetneq V$ represent $p=[v]\in X$, and let
+$u\in\widehat T_pX\setminus W$.  For every $m\geq1$ there is a section of
+$H^m$ that vanishes at every point of $X\cap\PP(W)$ but has nonzero first
+jet at $p$ in the direction $u$.
+\end{lemma}
+
+\begin{proof}
+Choose $\lambda\in V^*$ with $\lambda|_W=0$ and $\lambda(u)\neq0$, and
+choose $\mu\in V^*$ with $\mu(v)\neq0$.  The restriction to $X$ of
+$f=\lambda\mu^{m-1}$ vanishes on $X\cap\PP(W)$, while
+\[
+ df_v(u)=\lambda(u)\mu(v)^{m-1}\neq0.
+\]
+Thus its first jet separates the indicated tangent direction from every
+linear combination of evaluations supported on $X\cap\PP(W)$.
+\end{proof}
+
+\begin{lemma}[Support alternative]\label{lem:support-alternative}
+Assume $Z$ is point-span tangent-absorbing.  Let
+$p_1,\ldots,p_r\in Z$ have linearly independent representatives and put
+$W=\Span(v_1,\ldots,v_r)$.
+\begin{enumerate}[label=(\roman*)]
+\item If $r\leq d$, some point of $Z$ lies outside $\PP(W)$.
+\item If $r=d+1$, either some point of $Z$ lies outside $\PP(W)$, or
+\[
+ Z\subset\PP(W),\qquad \widehat T_pX=W\quad(p\in Z).
+\]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose $Z\subset\PP(W)$.  If $r\leq d$, then
+$\dim W=r<d+1=\dim\widehat T_{p_1}X$, so there is
+$u\in\widehat T_{p_1}X\setminus W$.  Lemma~\ref{lem:separator} gives a
+section annihilating $S_Z$ but not the corresponding tangent functional,
+contrary to absorption.
+
+Now let $r=d+1$.  Both $W$ and every $\widehat T_pX$ have dimension $d+1$.
+If $\widehat T_pX\neq W$ for some $p\in Z$, choose
+$u\in\widehat T_pX\setminus W$ and apply the same separator.  Hence the
+no-escape case forces $\widehat T_pX=W$ for every $p\in Z$.
+\end{proof}
+
+\section{Unisolvence in the Gauss branch}\label{sec:gauss-unisolvence}
+
+The following lemma is the additional characteristic-zero input.
+
+\begin{lemma}[Gauss-branch unisolvence]\label{lem:gauss-unisolvence}
+Let $W$ have dimension $d+1$, let $Z\subset\PP(W)$ be a nonempty finite
+reduced set, and suppose
+\[
+ \widehat T_pX=W\qquad(p\in Z).
+\]
+If $Z$ is point-span tangent-absorbing for $H^m$, then, for
+$R=\Sym(W^*)$ and the homogeneous ideal $I=I(Z)\subset R$,
+\[
+ I_m=0.
+\]
+Consequently,
+\[
+ \dim S_Z\geq\binom{d+m}{d},\qquad
+ |Z|\geq\binom{d+m}{d}.
+\]
+\end{lemma}
+
+\begin{proof}
+Let $F\in I_m$.  The inclusion $W\subseteq V$ induces a surjection
+$V^*\twoheadrightarrow W^*$ and hence a surjection
+$\Sym^m(V^*)\twoheadrightarrow\Sym^m(W^*)$, so $F$ extends to a degree-$m$
+form on $V$.  Its restriction to $X$ vanishes on $Z$.  Under the natural
+pairing, the resulting section pairs to zero with every evaluation in
+$S_Z$.  Absorption implies that its first jet vanishes along $X$ at every
+$p\in Z$.  Because $\widehat T_pX=W$, this is the full first jet of $F$ on
+$\PP(W)$.
+
+To identify that condition scheme-theoretically, choose homogeneous
+coordinates $x_0,\ldots,x_d$ on $W$ with $p=[1:0:\cdots:0]$.  On the chart
+$x_0=1$, vanishing of the value and of all projective directional derivatives
+says that $F(1,x_1,\ldots,x_d)$ has no terms of degree zero or one.  It
+therefore lies in $(x_1,\ldots,x_d)^2$; by homogeneity, this is equivalent to
+$F\in I(p)^2$.  Consequently
+\begin{equation}\label{eq:double-ideal}
+ I_m\subseteq\bigcap_{p\in Z} I(p)^2.
+\end{equation}
+
+Suppose $I_m\neq0$.  Choose a nonzero homogeneous $F\in I$ of minimal
+positive degree $\alpha$.  Then $\alpha\leq m$.  For each $p\in Z$, choose
+$G_p\in R_{m-\alpha}$ with $G_p(p)\neq0$; when $\alpha=m$, take a nonzero
+constant.  Since $G_pF\in I_m$, equation \eqref{eq:double-ideal} gives
+$G_pF\in I(p)^2$.  The germ of $G_p$ is a unit at $p$, hence
+$F\in I(p)^2$ in the local ring at $p$.
+
+It follows that every first partial derivative of $F$ vanishes at every
+point of $Z$.  Thus each partial derivative belongs to the radical ideal
+$I(Z)$.  These derivatives have degree $\alpha-1$, and in characteristic
+zero at least one is nonzero because $F$ has positive degree.  This
+contradicts the minimality of $\alpha$.  Hence $I_m=0$.
+
+The evaluation map
+\[
+ R_m\longrightarrow\CC^Z
+\]
+is therefore injective and has rank
+$\dim R_m=\binom{d+m}{d}$.  Every form on $W$ extends to $V$, so this value
+matrix is a submatrix of the restriction map for $H^m$.  Its rank is at
+most both $\dim S_Z$ and $|Z|$, proving the inequalities.
+\end{proof}
+
+\begin{remark}\label{rem:characteristic}
+Characteristic zero is used at the exact point where a positive-degree
+polynomial is required to have a nonzero partial derivative.  In
+characteristic $p$, a $p$th power defeats that step.  The separator and the
+squared-hyperplane construction are scheme-theoretic and appear
+characteristic-free, but Theorem~\ref{thm:main} is not asserted here in
+positive characteristic.
+\end{remark}
+
+\section{Proof of the main theorem}\label{sec:mainproof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Start with any point of $Z$.  Repeated application of
+Lemma~\ref{lem:support-alternative}(i) selects $d+1$ points with linearly
+independent representatives.  Lemma~\ref{lem:independent-jets} shows that
+their double points impose independent conditions on $H^m$.
+
+Dualizing the restriction map to these double points embeds a direct sum of
+$d+1$ vector spaces of dimension $d+1$ in $H^0(X,H^m)^*$.  Each summand is
+an affine tangent space and hence lies in $S_Z$ by absorption.  Therefore
+\[
+ \dim S_Z\geq(d+1)^2.
+\]
+Since $S_Z$ is spanned by $|Z|$ evaluation vectors, also
+$|Z|\geq\dim S_Z$.  This proves \eqref{eq:baseline}.
+
+Apply Lemma~\ref{lem:support-alternative}(ii) to the selected $d+1$ points.
+If another point escapes their representative span, the resulting $d+2$
+supports are projectively independent.  Lemma~\ref{lem:independent-jets}
+then gives alternative~(a) and the bound $(d+1)(d+2)$.
+
+If no point escapes, Lemma~\ref{lem:support-alternative}(ii) gives the
+subspace $W$ and the common Gauss fiber in alternative~(b).  Apply
+Lemma~\ref{lem:gauss-unisolvence} to obtain the bound
+$\binom{d+m}{d}$.  Since at least one branch holds, taking the smaller of
+their two bounds proves \eqref{eq:main-bound}.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:numerical}]
+For $d\geq3$ and $m\geq3$,
+\[
+ \binom{d+m}{d}\geq\binom{d+3}{d}
+ =\frac{(d+1)(d+2)(d+3)}6
+ \geq(d+1)(d+2).
+\]
+For $d=2$ and $m\geq4$, one has
+$\binom{m+2}{2}\geq15>12$.  For $(d,m)=(2,3)$ the two terms in
+\eqref{eq:main-bound} are $12$ and $10$; exactness is proved in
+Proposition~\ref{prop:p2-sharpness} below.
+
+Finally, $(d+1)(d+2)>(d+1)^2$, while for $d\geq2$
+\[
+ \binom{d+m}{d}\geq\binom{d+3}{d}>(d+1)^2,
+\]
+the last strict inequality being equivalent to $d(d-1)>0$.  Thus equality
+in the square baseline is impossible for $d\geq2$.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:gauss-threshold}]
+In alternative~(b), all of $Z$ lies in a single Gauss fiber, and
+Lemma~\ref{lem:gauss-unisolvence} gives
+$g_X(Z)=|Z|\geq\binom{d+m}{d}$.  The displayed strict hypothesis therefore
+excludes alternative~(b), so alternative~(a) must hold.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{cor:jet-supplement}]
+A very ample line bundle is $1$-jet ample, and
+Beltrametti--Di Rocco--Sommese
+\cite[Proposition~2.3]{BeltramettiDiRoccoSommese1999} prove that the tensor
+product of an $a$-jet ample bundle and a $b$-jet ample bundle is
+$(a+b)$-jet ample.  Thus $H^m$ is $m$-jet ample.  In their convention, a
+simple point has weight one, a first neighborhood $2p$ has weight two, and
+surjectivity is required for every collection of positive weights summing to
+$m+1$.
+
+Suppose first that $m=2q+1$.  If $|Z|\leq q$, enlarge $2Z$ at one support to
+a fat-point scheme of total weight $m+1$.  Surjectivity onto that larger
+scheme implies surjectivity onto $2Z$.  The dual tangent blocks would then be
+independent of total dimension $|Z|(d+1)$, but absorption places their span
+inside $S_Z$, whose dimension is at most $|Z|$.  This is impossible because
+$d\geq1$ and $Z$ is nonempty.  Hence $Z$ contains $q+1$ distinct supports.
+Their first neighborhoods have total weight $2(q+1)=m+1$, so their tangent
+blocks are independent and contained in $S_Z$.  Therefore
+\[
+ \dim S_Z,|Z|\geq(q+1)(d+1)=J(d,m).
+\]
+
+If $m=2q$, the same thickening argument excludes $|Z|\leq q$.  Choose $q$
+supports and one further support.  The union of the first neighborhoods of
+the first $q$ points and the simple last point has total weight
+$2q+1=m+1$.  Jet ampleness makes the corresponding dual blocks independent;
+they lie in $S_Z$ by absorption and by the definition of the point span.
+Consequently
+\[
+ \dim S_Z,|Z|\geq q(d+1)+1=J(d,m).
+\]
+Combining this estimate with Theorem~\ref{thm:main} gives the displayed
+maximum.  Finally, direct substitution in the even and odd cases shows that
+$J(d,m)>(d+1)(d+2)$ for every $m\geq2d+4$.
+\end{proof}
+
+\section{Exact examples and the degree threshold}\label{sec:examples}
+
+\begin{proposition}[Exact plane-cubic minimum]\label{prop:p2-sharpness}
+For a linearly embedded $X=\PP^2$ and $m=3$, the minimum cardinality and
+minimum vector-span dimension of a nonempty reduced point-span
+tangent-absorbing set are both $10$.  Equality is attained by
+\[
+ Z=\{[1:i:j]:i,j\in\mathbf Z_{\geq0},\ i+j\leq3\}.
+\]
+\end{proposition}
+
+\begin{proof}
+The lower bound $10$ is Corollary~\ref{cor:numerical}(iii).  The displayed
+set has ten points.  To prove that its evaluations span
+$H^0(\PP^2,\cO(3))^*$, dehomogenize and let $f(x,y)$ have total degree at
+most three and vanish on the triangular lattice.
+
+On the layer $y=0$, the polynomial $f(x,0)$ has the four roots
+$0,1,2,3$, hence vanishes identically and $f=yf_1$ with
+$\deg f_1\leq2$.  On $y=1$, the polynomial $f_1(x,1)$ has the three roots
+$0,1,2$, so $f_1=(y-1)f_2$ with $\deg f_2\leq1$.  On $y=2$,
+$f_2(x,2)$ has the two roots $0,1$, so $f_2=(y-2)f_3$ with $f_3$ constant.
+The last point on $y=3$ forces $f_3=0$.  Thus $f=0$.
+
+The evaluation map between two ten-dimensional vector spaces is an
+isomorphism.  Hence the point span is the full ambient dual and contains
+every tangent space.  Therefore $Z$ is absorbing and
+$\dim S_Z=|Z|=10$.
+\end{proof}
+
+\begin{lemma}[Simplex-lattice unisolvence]\label{lem:simplex-unisolvence}
+For integers $n,r\geq0$, the set
+\[
+ \Delta_{n,r}:=\{(a_1,\ldots,a_n)\in\mathbf Z_{\geq0}^n:
+                         a_1+\cdots+a_n\leq r\}
+\]
+is unisolvent for polynomials in $n$ variables of total degree at most $r$.
+\end{lemma}
+
+\begin{proof}
+We induct on $n+r$.  The cases $n=0$ and $r=0$ are immediate.  Suppose that
+$f$ of degree at most $r$ vanishes on $\Delta_{n,r}$.  Its restriction
+$f(x_1,\ldots,x_{n-1},0)$ vanishes on $\Delta_{n-1,r}$ and is zero by
+induction.  Hence $f=x_n g$ with $\deg g\leq r-1$.  For every
+$(a_1,\ldots,a_{n-1},s)\in\Delta_{n,r}$ with $s\geq1$, one has $g=0$ at
+that point.  Thus
+\[
+ h(x_1,\ldots,x_{n-1},t)
+ :=g(x_1,\ldots,x_{n-1},t+1)
+\]
+vanishes on $\Delta_{n,r-1}$.  Induction gives $h=0$, hence $g=0$ and
+$f=0$.  Since $|\Delta_{n,r}|=\binom{n+r}{n}$ equals the dimension of the
+polynomial space, the evaluation map is an isomorphism.
+\end{proof}
+
+\begin{remark}[A three-dimensional equality fixture]\label{rem:p3-fixture}
+For $X=\PP^3$ and $m=3$, the bound is $20$ and is also attained by
+\[
+ \{[1:i:j:k]:i,j,k\in\mathbf Z_{\geq0},\ i+j+k\leq3\}.
+\]
+Lemma~\ref{lem:simplex-unisolvence}, with $(n,r)=(3,3)$, proves that these
+twenty evaluations are unisolvent for polynomials of total degree at most
+three.  Their span is ambient, so the fixture is absorbing.
+\end{remark}
+
+\begin{proposition}[Degree two cannot satisfy the uniform baseline]
+\label{prop:p1-m2}
+Let $X=\PP^1$ in its linear embedding and let $m=2$.  Any three distinct
+points form a point-span tangent-absorbing set with
+\[
+ \dim S_Z=|Z|=3<4=(d+1)^2.
+\]
+Consequently the hypothesis $m\geq3$ in the uniform baseline cannot be
+weakened to $m=2$.
+\end{proposition}
+
+\begin{proof}
+A binary quadratic vanishing at three distinct points is zero.  Hence
+evaluation at the three points is an isomorphism
+\[
+ H^0(\PP^1,\cO(2))\longrightarrow\CC^3.
+\]
+The three evaluation vectors span the full ambient dual, so they contain all
+embedded tangent spaces and absorption is automatic.  The asserted
+dimensions follow.
+\end{proof}
+
+For comparison, when $X=\PP^1$ and $m=3$, four distinct points fill
+$H^0(\PP^1,\cO(3))^*$ and attain the square baseline $4$.  Thus the square
+bound remains exact in dimension one, although Corollary~\ref{cor:numerical}
+shows that it is never exact in dimensions at least two.
+
+\section{Smooth quadrics}\label{sec:quadrics}
+
+\begin{corollary}\label{cor:quadrics}
+Let $Q^d\subset\PP^{d+1}$ be a smooth complex quadric and let $m\geq3$.
+Every nonempty finite reduced point-span tangent-absorbing set for
+$\cO_Q(m)$ satisfies
+\[
+ \dim S_Z,\ |Z|\geq(d+1)(d+2).
+\]
+\end{corollary}
+
+\begin{proof}
+If $B$ is a nondegenerate symmetric bilinear form defining $Q$, then the
+affine tangent space at $[v]$ is the polar hyperplane $v^\perp$.  Polarity is
+injective, so every Gauss fiber has one point.  Since
+$1<\binom{d+m}{d}$, Corollary~\ref{cor:gauss-threshold} applies.
+\end{proof}
+
+For a quadric curve $Q^1\cong\PP^1$ one has
+$\cO_Q(m)\cong\cO_{\PP^1}(2m)$.  A reduced set is absorbing exactly when
+it has at least $2m+1$ points: at that cardinality its evaluations fill the
+ambient dual, while with at most $2m$ points one can construct a degree-$2m$
+form vanishing simply at any prescribed support.  This sharper
+one-dimensional calculation is compatible with, but not implied sharply by,
+the dimension-independent quadric bound above.
+
+\section{Relation to adjacent interpolation notions}\label{sec:comparison}
+
+Terracini loci parameterize finite sets for which the union of double points
+fails to impose the expected independent conditions
+\cite{BallicoChiantini2021,GaluppiEtAl2023}.  Point-span absorption is more
+restrictive: the value rank and the double-point rank are equal.  It therefore
+produces an extreme Terracini defect whenever the value span is not already
+ambient, but ordinary Terracini defect does not imply absorption.
+
+The independence lemma belongs to the established theory of simultaneous
+jet separation.  In the terminology of Beltrametti--Di Rocco--Sommese
+\cite{BeltramettiDiRoccoSommese1999}, jet ampleness asks for uniform
+surjectivity over prescribed zero-dimensional data.  Their
+Proposition~2.3 implies that $H^m$ is $m$-jet ample and is exactly the external
+input used in Corollary~\ref{cor:jet-supplement}.  By contrast, the proof of
+Lemma~\ref{lem:independent-jets} separates only its specific finite union of
+first neighborhoods.  Ballico--Chiantini's
+condition $\dagger$ and their Theorem~3.5 provide exactly the product
+criterion used in Lemma~\ref{lem:independent-jets}.
+
+Base loci and strong base loci of tangential projections concern spans
+generated by tangent spaces that contain an additional point or an additional
+tangent space \cite{BallicoBrambillaSantarsiero2026}.  There is an exact
+translation in one direction.  Since the evaluation at $p$ lies in the affine
+tangent space at $\varphi_m(p)$, absorption gives
+\[
+ S_Z=\Span\{\widehat T_{\varphi_m(p)}\varphi_m(X):p\in Z\}.
+\]
+If $A\subseteq Z$ is minimal among subsets whose tangent spaces span $S_Z$,
+then every $q\in Z\setminus A$ belongs to the strong base locus of $A$ for
+$\varphi_m(X)$.  The extra feature here is that this tangent span equals the
+span of evaluations of the full support $Z$.  The Veronese classifications in
+\cite{BallicoBrambillaSantarsiero2026} therefore give relevant context, but do
+not by themselves establish the point-span bounds proved above.  That source
+also shows that strong base loci and Terracini loci are not comparable in
+general.
+
+Finally, the exceptional branch uses the Gauss map of the original embedding,
+not the Gauss map after the $m$th re-embedding.  General fibers of Gauss maps
+in characteristic zero and the additional inseparable phenomena in positive
+characteristic belong to a broader classical theory; see, for example,
+\cite{Furukawa2013,FurukawaIto2017}.  No classification of Gauss-degenerate
+varieties or their absorbing configurations is attempted here.
+
+These comparisons delimit the claims.  They do not establish that no related
+statement exists elsewhere, and no exhaustive priority assertion is made.
+
+\section{Scope and limitations}\label{sec:scope}
+
+\begin{itemize}
+\item Theorem~\ref{thm:main} is stated and proved over $\CC$.  The
+minimal-degree derivative step in Lemma~\ref{lem:gauss-unisolvence} is the
+specific obstruction to carrying this proof unchanged to positive
+characteristic.
+\item The theorem bounds rank and cardinality but does not classify absorbing
+sets, even inside the common Gauss fiber of alternative~\textup{(b)}.
+\item The plane and three-space equality examples fill their ambient value
+spaces.  No assertion is made that all equality cases are ambient or that the
+examples classify equality.
+\item The comparison with the cited literature is deliberately conservative.
+It supplies attribution and logical distinctions, not a comprehensive
+bibliographic or priority review.
+\item Finite computational rank checks can verify explicit fixtures but do
+not prove the universal theorem.  The proof is the argument in
+Sections~\ref{sec:independence}--\ref{sec:mainproof}.
+\end{itemize}
+
+\section{Conclusion}
+
+Point-span tangent absorption forces two complementary forms of rigidity.
+Support escape produces $d+2$ independent first-jet blocks, while failure of
+escape concentrates the set in a common tangent plane and forces degree-$m$
+unisolvence there.  Combining the two branches yields the minimum in
+\eqref{eq:main-bound}, the unconditional strong range in
+Corollary~\ref{cor:numerical}, and the exact plane-cubic value $10$.
+Jet-ampleness supplies the complementary growing estimate $J(d,m)$ of
+Corollary~\ref{cor:jet-supplement}.  The argument also isolates why
+characteristic zero and the threshold $m\geq3$ enter the present formulation.
+
+\begin{thebibliography}{99}
+
+\bibitem{BallicoBrambillaSantarsiero2026}
+E.~Ballico, M.~C.~Brambilla, and P.~Santarsiero,
+\emph{On the strong base locus of a projective variety},
+arXiv:2603.15103 (2026).
+\url{https://arxiv.org/abs/2603.15103}
+
+\bibitem{BallicoChiantini2021}
+E.~Ballico and L.~Chiantini,
+\emph{On the Terracini locus of projective varieties},
+Milan J. Math. \textbf{89} (2021), 1--17.
+\url{https://doi.org/10.1007/s00032-020-00324-5}
+
+\bibitem{BeltramettiDiRoccoSommese1999}
+M.~C.~Beltrametti, S.~Di Rocco, and A.~J.~Sommese,
+\emph{On generation of jets for vector bundles},
+Rev. Mat. Complut. \textbf{12} (1999), 27--45.
+\url{https://doi.org/10.5209/rev_REMA.1999.v12.n1.17182}
+
+\bibitem{Furukawa2013}
+K.~Furukawa,
+\emph{On general fibers of Gauss maps in positive characteristic},
+arXiv:1310.5387 (2013).
+\url{https://arxiv.org/abs/1310.5387}
+
+\bibitem{FurukawaIto2017}
+K.~Furukawa and A.~Ito,
+\emph{On separable higher Gauss maps},
+arXiv:1702.06010 (2017).
+\url{https://arxiv.org/abs/1702.06010}
+
+\bibitem{GaluppiEtAl2023}
+F.~Galuppi, P.~Santarsiero, D.~A.~Torrance, and E.~T.~Turatti,
+\emph{Geometry of first nonempty Terracini loci},
+arXiv:2311.09067 (2023).
+\url{https://arxiv.org/abs/2311.09067}
+
+\end{thebibliography}
+
+\end{document}

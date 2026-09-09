@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "reviewed_on": "2026-09-09",
+  "window": {
+    "start": "2026-09-03",
+    "end": "2026-09-09",
+    "calendar_week_start": "2026-09-07"
+  },
+  "coverage": "targeted, non-exhaustive",
+  "repository_card": {
+    "repository": "lluiseriksson/point-span-tangent-absorption",
+    "source_ids": [
+      "2608.08442",
+      "2609.03784"
+    ],
+    "local_anchors": [
+      "README.md",
+      "successor_v0.1/RESEARCH_AUDIT.md"
+    ],
+    "frontier": "Both manuscript packages are frozen. The current paper concerns characteristic-free finite span bounds and sharp Gauss-fibre examples; no directly matching weekly Gauss-fibre theorem was verified.",
+    "bridge_hypothesis": "Compare fundamental-form symmetry with the paper's tangent-absorption condition. Dictionary: first fundamental data -> tangent space; higher forms -> osculating restrictions. General-point infinitesimal symmetry loses special finite incidence and cannot extend a characteristic-free theorem by itself.",
+    "next_finite_task": "For one existing sharp example, compute first and second fundamental forms and compare their ranks with the point-span bound. Use the Hodge split-binary family only as a candidate example family after checking smoothness and tangent ranks.",
+    "falsifier": "Reject an extension if it relies on characteristic-zero genericity, identifies tangent and second-osculating contact, or infers a special absorbing point set from an automorphism-dimension bound.",
+    "related_repositories": [
+      "hodge-conjecture-research-front"
+    ],
+    "proposal_status": "speculative; not executed or formally verified",
+    "eliminated_hypotheses": [],
+    "inspected_commit": "fd6e87d648667fed4438c5ce298ca2a0c8eda6d7"
+  },
+  "sources": [
+    {
+      "id": "arxiv:2608.08442",
+      "arxiv_id": "2608.08442",
+      "title": "Fundamental forms and infinitesimal symmetries of projective varieties",
+      "authors": [
+        "Hwang, Jun-Muk",
+        "Li, Qifeng"
+      ],
+      "first_submitted": "2026-08-09",
+      "latest_revision": "2026-08-09",
+      "reviewed_version": "v1",
+      "url": "https://arxiv.org/abs/2608.08442v1",
+      "doi": "10.48550/arXiv.2608.08442",
+      "verified_on": "2026-09-09",
+      "recency": "background",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "Abstract and submission history",
+      "source_claim": "Hwang and Li bound the dimension of the linear automorphism group of a projective variety using fundamental forms at a general point, with equality characterized by Euler symmetry.",
+      "limits": "A general-point symmetry bound does not construct a special finite tangent-absorbing configuration. Higher fundamental forms and the characteristic assumptions must be retained. First posted 9 August.",
+      "tags": [
+        "tangent-spaces",
+        "fundamental-forms",
+        "algebraic-geometry"
+      ],
+      "abstract_page_sha256": "cdb06d74240b597fff3c0f6c9ca26acda4bdf556989b2d04a1136310cae08c5b",
+      "reviewed_full_text_sha256": "8be7adf1d35ffaa06b3dacf8aa576666cf86f15d306b11a7ddeaf9d8a8066725",
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    },
+    {
+      "id": "arxiv:2609.03784",
+      "arxiv_id": "2609.03784",
+      "title": "A note on the noncommutative Hodge conjecture for graded matrix factorizations",
+      "authors": [
+        "Lin, Xun",
+        "Zhang, Shizhuo"
+      ],
+      "first_submitted": "2026-09-03",
+      "latest_revision": "2026-09-03",
+      "reviewed_version": "v1",
+      "url": "https://arxiv.org/abs/2609.03784v1",
+      "doi": "10.48550/arXiv.2609.03784",
+      "verified_on": "2026-09-09",
+      "recency": "new-in-trailing-week",
+      "publication_status": "preprint; peer-review status not established in this sweep",
+      "evidence_level": "literature",
+      "review_depth": "v1: Theorem 1.1, Corollary 1.2, Lemma 3.1 and Proposition 4.1",
+      "source_claim": "Lin and Zhang report rational Hodge results for sums of independently very general squarefree binary forms, with m>=2 and d>=7. Explicit matrix factorizations supply classes; monodromy controls their exhaustion.",
+      "limits": "Theorem 1.1 and Corollary 1.2 concern this particular very-general family. They do not settle general rational Hodge, identify every special parameter, or construct the repository's prescribed clean-nodal detector.",
+      "tags": [
+        "hodge",
+        "matrix-factorizations",
+        "monodromy",
+        "algebraic-geometry"
+      ],
+      "abstract_page_sha256": "82e3e43b3c449cca283b249bde39323b433a2d7bdbb968c7459268753930f78c",
+      "reviewed_full_text_sha256": "edf1c0891ad731af1e5d52319b28a25dbe84e75dc788a770189a0e7de468bf8b",
+      "reuse": "Bibliographic metadata and original synthesis only; no permission to train on linked full text is inferred."
+    }
+  ]
+}

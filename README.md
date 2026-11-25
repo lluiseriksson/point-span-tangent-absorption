@@ -53,12 +53,12 @@ No license is asserted or inferred. Copyright and reuse permissions therefore
 remain with the author unless a later explicit license is added.
 
 <!-- papers-index:start -->
-## Paper index (AIRR and ai.viXra)
+## Paper index (AIRR)
 
 This repository accompanies the following paper by Lluis Eriksson.
 AIRR status is the archive's own label for the record; it is not peer review.
 
-| Title | AIRR | ai.viXra | AIRR status |
-|---|---|---|---|
-| Characteristic-Free Bounds and Sharp Gauss-Fiber Examples for Point-Span Tangent Absorption | [ARR-2026-19BXX42GM38K6VZ3](https://airr.science/papers/ARR-2026-19BXX42GM38K6VZ3/) | — | accepted |
+| Title | AIRR | AIRR status |
+|---|---|---|
+| Characteristic-Free Bounds and Sharp Gauss-Fiber Examples for Point-Span Tangent Absorption | [ARR-2026-19BXX42GM38K6VZ3](https://airr.science/papers/ARR-2026-19BXX42GM38K6VZ3/) | accepted |
 <!-- papers-index:end -->
